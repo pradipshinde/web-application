@@ -8,6 +8,6 @@ package com.pradip.web.core.domain;
  */
 public enum Priority {
 	LOW,
-	MEDUM,
+	MEDIUM,
 	HIGH
 }
