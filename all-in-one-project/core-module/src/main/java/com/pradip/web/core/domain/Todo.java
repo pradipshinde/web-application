@@ -4,10 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,6 +20,11 @@ import javax.persistence.TemporalType;
  * @author Pradip
  *
  */
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "findTodosByUser", query = "SELECT t FROM Todo t where t.userId = ?1 order by t.dueDate"),
+        @NamedQuery(name = "findTodosByTitle", query = "SELECT t FROM Todo t where t.userId = ?1 and upper(t.title) like ?2 order by t.dueDate")
+})
 public class Todo implements Serializable {
 	
 
